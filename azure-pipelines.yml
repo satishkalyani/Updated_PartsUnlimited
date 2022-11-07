@@ -32,3 +32,31 @@ stages:
               ArtifactName: 'drop'
               publishLocation: 'Container'
   
+  - stage: 
+    displayName: Infrastructure_Provisioning
+    jobs:
+      - job:
+        displayName: Terrafrom
+        steps:
+          - task: TerraformTaskV3@3
+            inputs:
+              provider: 'azurerm'
+              command: 'init'
+              workingDirectory: '$(System.DefaultWorkingDirectory)\automation\terraform'
+              backendServiceArm: 'Free Trial(a1bba573-9004-46f4-b502-223c729c1969)'
+              backendAzureRmResourceGroupName: 'rg-tf-backends'
+              backendAzureRmStorageAccountName: 'azb23tfremotebackend'
+              backendAzureRmContainerName: 'tfremotebackend'
+              backendAzureRmKey: 'dev.terraform.tfstate'
+          - task: TerraformTaskV3@3
+            inputs:
+              provider: 'azurerm'
+              command: 'plan'
+              workingDirectory: '$(System.DefaultWorkingDirectory)\automation\terraform'
+              environmentServiceNameAzureRM: 'Free Trial(a1bba573-9004-46f4-b502-223c729c1969)'
+          - task: TerraformTaskV3@3
+            inputs:
+              provider: 'azurerm'
+              command: 'apply'
+              workingDirectory: '$(System.DefaultWorkingDirectory)\automation\terraform'
+              environmentServiceNameAzureRM: 'Free Trial(a1bba573-9004-46f4-b502-223c729c1969)'
