@@ -1,34 +1,34 @@
-# ASP.NET
-# Build and test ASP.NET projects.
-# Add steps that publish symbols, save build artifacts, deploy, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/apps/aspnet/build-aspnet-4
-
-trigger:
-- master
-
 pool:
-  Agent: mynewpoolagent
+  name: Mynewpoolagent
 
 variables:
-  solution: '**/*.sln'
-  buildPlatform: 'Any CPU'
-  buildConfiguration: 'Release'
+  BuildConfiguration: "release"
+  BuildPlatform: "any cpu"
 
-steps:
-- task: NuGetToolInstaller@1
-
-- task: NuGetCommand@2
-  inputs:
-    restoreSolution: '$(solution)'
-
-- task: VSBuild@1
-  inputs:
-    solution: '$(solution)'
-    msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation="$(build.artifactStagingDirectory)"'
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
-
-- task: VSTest@2
-  inputs:
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
+stages:
+  - stage:
+    displayName: Build
+    jobs:
+      - job:
+        displayName: Build_And_Publish
+        steps:
+          - task: NuGetCommand@2
+            displayName: Nuget_Restore
+            inputs:
+              command: 'restore'
+              restoreSolution: '**/*.sln'
+              feedsToUse: 'select'
+          - task: VSBuild@1
+            displayName: Build_Solution
+            inputs:
+              solution: '**\*.sln'
+              msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation="$(build.artifactstagingdirectory)\\"'
+              platform: '$(BuildPlatform)'
+              configuration: '$(BuildConfiguration)'
+          - task: PublishBuildArtifacts@1
+            displayName: Publish_Artifact
+            inputs:
+              PathtoPublish: '$(build.artifactstagingdirectory)'
+              ArtifactName: 'drop'
+              publishLocation: 'Container'
+  
