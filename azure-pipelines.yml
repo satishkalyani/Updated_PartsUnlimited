@@ -73,6 +73,6 @@ stages:
             inputs:
               azureSubscription: 'Free Trial(a1bba573-9004-46f4-b502-223c729c1969)'
               appType: 'webApp'
-              appName: 'mywebhub-01'
+              appName: 'my-win-app-01'
               package: '$(System.DefaultWorkingDirectory)/_satishkalyani.Updated_PartsUnlimited/drop/PartsUnlimitedWebsite.zip'
               deploymentMethod: 'auto'
