@@ -69,9 +69,10 @@ stages:
       - job:
         displayName: Terrafrom
         steps:
-          - task: AzureRmWebAppDeployment@4
+          - task: AzureWebApp@1
             inputs:
-              ConnectionType: 'AzureRM'
+              azureSubscription: 'Free Trial(a1bba573-9004-46f4-b502-223c729c1969)'
               appType: 'webApp'
-              WebAppName: 'mywebhub-01'
-              packageForLinux: '$(System.DefaultWorkingDirectory)/_satishkalyani.Updated_PartsUnlimited/drop/PartsUnlimitedWebsite.zip'
+              appName: 'mywebhub-01'
+              package: '$(System.DefaultWorkingDirectory)/_satishkalyani.Updated_PartsUnlimited/drop/PartsUnlimitedWebsite.zip'
+              deploymentMethod: 'auto'
