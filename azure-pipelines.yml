@@ -50,14 +50,14 @@ stages:
               backendAzureRmContainerName: 'tfremotebackend'
               backendAzureRmKey: 'dev.terraform.tfstate'
           - task: TerraformTaskV3@3
-            displayName: Terraform_apply
+            displayName: Terraform_Plan
             inputs:
               provider: 'azurerm'
               command: 'plan'
               workingDirectory: '$(System.DefaultWorkingDirectory)\automation\terraform'
               environmentServiceNameAzureRM: 'Free Trial(a1bba573-9004-46f4-b502-223c729c1969)'
           - task: TerraformTaskV3@3
-            displayName: Terraform_apply
+            displayName: Terraform_Apply
             inputs:
               provider: 'azurerm'
               command: 'apply'
