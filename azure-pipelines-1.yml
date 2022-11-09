@@ -31,10 +31,3 @@ stages:
               PathtoPublish: '$(build.artifactstagingdirectory)'
               ArtifactName: 'drop'
               publishLocation: 'Container'
-  - stage: 
-    displayName: Infrastructure_Provisioning
-    jobs:
-      - job:
-        displayName: Terrafrom
-        steps:
-          
