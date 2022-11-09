@@ -63,3 +63,17 @@ stages:
               command: 'apply'
               workingDirectory: '$(System.DefaultWorkingDirectory)\automation\terraform'
               environmentServiceNameAzureRM: 'Free Trial(a1bba573-9004-46f4-b502-223c729c1969)'
+  - stage: 
+    displayName: Release_To_Dev
+    jobs:
+      - job:
+        displayName: Terrafrom
+        steps:
+          - task: AzureRmWebAppDeployment@4
+            displayName: WebApp
+            inputs:
+              ConnectionType: 'AzureRM'
+              azureSubscription: 'Free Trial(a1bba573-9004-46f4-b502-223c729c1969)'
+              appType: 'webApp'
+              WebAppName: 'mywebhub-01'
+              packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
