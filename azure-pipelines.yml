@@ -73,5 +73,5 @@ stages:
             inputs:
               ConnectionType: 'AzureRM'
               appType: 'webApp'
-              WebAppName: 
+              WebAppName: 'mywebhub-01'
               packageForLinux: '$(System.DefaultWorkingDirectory)/_satishkalyani.Updated_PartsUnlimited/drop/PartsUnlimitedWebsite.zip'
