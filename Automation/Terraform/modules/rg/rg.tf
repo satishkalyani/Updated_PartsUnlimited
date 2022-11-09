@@ -6,13 +6,11 @@ resource "azurerm_resource_group" "main" {
     environment = var.tag_env_name
   }
 }
-
 output "rg_id" {
-  description = "Resource ID of RG"
-  value = azurerm_resource_group.main.id
+    description = "Resource id of rg"
+    value = azurerm_resource_group.main.id
 }
-
 output "rg_name" {
-  description = "Resource Group Name"
-  value = azurerm_resource_group.main.name
+ description = "Resource group name"
+ value = azurerm_resource_group.main.name 
 }
