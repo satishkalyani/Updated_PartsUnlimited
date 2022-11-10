@@ -1,6 +1,6 @@
 variable "rg_name" {
     type = string
-  default = "rg-myproject-02"
+  default = "rg-myproject-002"
 }
 variable "rg_location" {
     type = string
