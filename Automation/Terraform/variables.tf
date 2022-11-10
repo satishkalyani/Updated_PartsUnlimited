@@ -26,7 +26,7 @@ variable "subnet_01_address_perfix" {
 }
 variable "tag_env_name" {
   type    = string
-  default = "stage"
+  default = "Development"
 }
 variable "nic_01_name" {
   type    = string
