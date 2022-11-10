@@ -48,24 +48,3 @@ variable "pip_01_name" {
   type    = string
   default = "pip-myproject-wus3-01"
 }
-variable "app_service_plan_01_name" {
-  type    = string
-  default = "my-service-plan-02"
-}
-variable "web_01_name" {
-  type    = string
-  default = "my-webapp-server-002"
-}
-variable "appservice_01_name" {
-  type    = string
-  default = "my-app-service-02"
-}
-variable "sqlserver_01_name" {
-  type    = string
-  default = "sql-myserver-02"
-}
-
-variable "sql_database_01_name" {
-  type    = string
-  default = "my-sqldb-002"
-}
