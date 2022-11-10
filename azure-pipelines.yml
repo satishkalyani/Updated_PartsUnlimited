@@ -36,7 +36,7 @@ stages:
     displayName: Infrastructure_Provisioning
     jobs:
       - job:
-        displayName: Terrafrom
+        displayName: Terraform
         steps:
           - task: TerraformTaskV3@3
             displayName: Terraform_Init
@@ -67,7 +67,7 @@ stages:
     displayName: Release_To_Dev
     jobs:
       - job:
-        displayName: Terrafrom
+        displayName: Terraform
         steps:
           - task: AzureWebApp@1
             inputs:
