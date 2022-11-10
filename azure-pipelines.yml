@@ -70,7 +70,6 @@ stages:
         displayName: Terraform
         steps:
           - task: AzureRmWebAppDeployment@4
-            displayName: DeployToAzureApp
             inputs:
               ConnectionType: 'AzureRM'
               azureSubscription: 'Free Trial(a1bba573-9004-46f4-b502-223c729c1969)'
