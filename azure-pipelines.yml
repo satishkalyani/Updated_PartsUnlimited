@@ -75,4 +75,4 @@ stages:
               azureSubscription: 'Free Trial(a1bba573-9004-46f4-b502-223c729c1969)'
               appType: 'webApp'
               WebAppName: 'my-win-app-001'
-              packageForLinux: '$(System.DefaultWorkingDirectory)/_satishkalyani.Updated_PartsUnlimited/drop/PartsUnlimitedWebsite.zip'
+              packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
