@@ -69,10 +69,10 @@ stages:
       - job:
         displayName: Terraform
         steps:
-          - task: AzureWebApp@1
+          - task: AzureRmWebAppDeployment@4
             inputs:
+              ConnectionType: 'AzureRM'
               azureSubscription: 'Free Trial(a1bba573-9004-46f4-b502-223c729c1969)'
               appType: 'webApp'
-              appName: 'my-win-app-01'
-              package: '$(System.DefaultWorkingDirectory)/_satishkalyani.Updated_PartsUnlimited/drop/PartsUnlimitedWebsite.zip'
-              deploymentMethod: 'auto'
+              WebAppName: 'my-webapps-001'
+              packageForLinux: '$(System.DefaultWorkingDirectory)/_satishkalyani.Updated_PartsUnlimited/drop/PartsUnlimitedWebsite.zip'
