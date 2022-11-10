@@ -124,7 +124,7 @@ resource "azurerm_public_ip" "pip-01" {
 }
 
 resource "azurerm_service_plan" "asp-01" {
-  name                = "my-webapps-01"
+  name                = "my-webapps-001"
   resource_group_name = var.rg_01_name
   location            = var.rg_01_location
   sku_name            = "B1"
@@ -136,7 +136,7 @@ resource "azurerm_service_plan" "asp-01" {
 }
 
 resource "azurerm_windows_web_app" "app-01" {
-  name                = "my-win-app-01"
+  name                = "my-win-app-001"
   resource_group_name = var.rg_01_name
   location            = var.rg_01_location
   service_plan_id     = azurerm_service_plan.asp-01.id
@@ -154,7 +154,7 @@ resource "azurerm_windows_web_app" "app-01" {
 }
 
 resource "azurerm_mssql_server" "sql-server-01" {
-  name                         = "mssql-server-01"
+  name                         = "mssql-server-001"
   resource_group_name          = var.rg_01_name
   location                     = var.rg_01_location
   version                      = "12.0"
@@ -176,7 +176,7 @@ resource "azurerm_mssql_server" "sql-server-01" {
 }
 
 resource "azurerm_mssql_database" "sql-db-01" {
-  name         = "mssql-db-01"
+  name         = "mssql-db-001"
   server_id    = azurerm_mssql_server.sql-server-01.id
   license_type = "LicenseIncluded"
   max_size_gb  = 4
